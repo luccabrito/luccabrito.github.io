@@ -72,6 +72,13 @@
             const artist = document.getElementById("artist").value;
             const messageDiv = document.getElementById("message");
 
+            const totalLength = lyric.length + track.length + artist.length;
+
+            if (totalLength > 294) {
+            messageDiv.innerHTML = '<div class="alert alert-warning">Essa letra é grande demais para este pequeno bot!</div>';
+            return;
+            }
+
             try {
                 const response = await fetch("https://spillout-production.up.railway.app/lyrics", {
                     method: "POST",
